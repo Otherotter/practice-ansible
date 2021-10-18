@@ -1,0 +1,6 @@
+---
+  - hosts: local
+    become: yes
+    tasks:
+     - name: e
+       command: date

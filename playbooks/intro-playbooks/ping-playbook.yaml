@@ -1,0 +1,8 @@
+# ping.yaml
+---
+  - name: ping servers without esculated privlages 
+    hosts: all
+    tasks:
+      - name: Pinging all servers
+        action: ping
+

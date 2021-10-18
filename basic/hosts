@@ -1,0 +1,15 @@
+[local] 
+control ansible_connection=local 
+
+[webservers] 
+beta ansible_user=cloud_user ansible_host=3.95.56.120 #beta 
+charlie ansible_user=cloud_user ansible_host=54.226.228.17 #charlie 
+
+
+#Inventory file are used by ansible for configuration 
+#Default location for inventory is a file called /etc/ansible/hosts.You may need to create it. 
+#specify a different inventory file at the command line using the -i <path> 
+# The format below is in INI format 
+# [group1] 
+# IP_ADDRESS # alias_for_ip ansible_host=IP-ADDRESS 
+
