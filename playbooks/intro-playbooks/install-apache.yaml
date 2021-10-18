@@ -1,0 +1,53 @@
+---
+  - hosts: webservers
+    become: true
+    remote_user: ansible
+    handler:
+      - name: This is a handler. It is used to remember state. It only active when a play that calls it has changed state
+        command: echo Hello World  #Executes a command on a remote node
+          
+    tasks:
+      - name: Install Apache
+        yum: 
+          name:  httpd 
+          state: present
+
+      - name: Transfer application file
+        copy: 
+          src:  webpages/index.php
+          dest: /var/www/html
+          mode: u=rw,g=r,o=r
+      
+      - name: Allow http/port-80 (public) in centos
+        when: ansible_facts['distribution'] == "CentOS" #conditional in ansible. Runs when play when true.
+        firewalld:
+          service: http
+          zone: public
+          immediate: yes
+          permanent: yes
+          state: enabled
+      
+      - name: Reload firewalld service 
+        when: ansible_facts['distribution'] == "CentOS"
+        systemd:
+          name: firewalld
+          state: reloaded
+      
+      - name: Start httpd [service start httpd]
+        service: 
+          name:    httpd 
+          state:   started 
+          enabled: yes
+        
+
+
+
+
+
+
+      #- name: Configure short Opening path
+      #  lineinfile:
+      #    path: /etc/php.ini
+      #    regexp: ^short_open_tag
+      #    line: 'short_open_tag=On'
+

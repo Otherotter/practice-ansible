@@ -1,3 +1,4 @@
 ansible all -a "/bin/echo hello"
 
 ansible all -m ping
+ansible <hostname> -m ansible.builtin.setup #print information (facts) about subservient machines

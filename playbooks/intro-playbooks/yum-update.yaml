@@ -3,7 +3,7 @@
 ---
   - hosts: webservers
     remote_user: ansible #user account used in the SSH connection
-    #become: yes #activate privilege escalation
+    become: yes #activate privilege escalation
     #become_user: ansible #set to user with desired privileges. the user you BECOME
     tasks:
       - name: Update yum packages
