@@ -1,13 +1,7 @@
 # practice-ansible
 
-
-Ansible Master Machine
-```javascript
-cat ~/.ssh/id_rsa.pub
-```
-Ansible Subservant Machine
-```javascript
-vim ~/.ssh/authorized_keys
+Tranfers rsa_id.pub to subservent machine. Must know the password of subservent machine.
+```ssh-copy-id <USER_NAME>@<IP_ADDRESS>
 ```
 Allow a user to run commands without sudo
 ```javascript
