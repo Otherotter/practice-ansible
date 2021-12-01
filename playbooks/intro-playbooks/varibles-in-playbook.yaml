@@ -1,0 +1,16 @@
+---
+  vars:
+    foo: "Example of varible"
+    age: 53
+  tasks:
+    - name: Echo command
+      comand: echo {{ age }}
+    
+    - name:
+      command: echo {{ age }} >> age.txt
+
+    - name:
+      command: echo {{ansible_hostname >> hostname.txt"  
+
+
+
